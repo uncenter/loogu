@@ -29,8 +29,7 @@
 		"format": "prettier --write ."
 	},
 	"dependencies": {
-		"kleur": "^4.1.5",
-		"test": "link:/Users/uncenter/Dev/test"
+		"kleur": "^4.1.5"
 	},
 	"devDependencies": {
 		"prettier": "^3.0.2",
