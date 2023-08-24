@@ -1,10 +1,11 @@
 {
-	"name": "logger",
-	"version": "0.0.0",
+	"name": "loogu",
+	"description": "A simple logging utility.",
+	"version": "0.1.0",
 	"author": "uncenter (https://uncenter.dev)",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/uncenter/logger.git"
+		"url": "https://github.com/uncenter/loogu.git"
 	},
 	"license": "MIT",
 	"files": [
