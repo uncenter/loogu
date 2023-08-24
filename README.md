@@ -1,8 +1,5 @@
 # 🪵 loogu
 
-> [!NOTE]
-> See the images in [`docs/`](/docs/) to see `loogu` in action.
-
 ```sh
 npm i loogu
 pnpm add loogu
