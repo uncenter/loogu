@@ -25,7 +25,6 @@
 	},
 	"scripts": {
 		"build": "unbuild",
-		"lint": "eslint --fix src/*.ts",
 		"format": "prettier --write ."
 	},
 	"dependencies": {
