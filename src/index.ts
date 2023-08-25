@@ -44,7 +44,7 @@ class Logger {
 
 			console.log(
 				`${prefix}${colors[level](
-					` ${kleur.black(level.toUpperCase())} `,
+					`\u2009${kleur.black(level.toUpperCase())}\u2009`,
 				)} ${string}`,
 			);
 		}
