@@ -11,12 +11,19 @@ yarn add loogu
 ```js
 import { Logger } from 'loogu';
 
-const log = new Logger('MyApp');
+const log = new Logger();
 
-log.debug('This is a debug message.');
-log.info('This is an informational message.');
-log.warn('This is a warning message.');
-log.error('This is an error message.');
+log.debug('Beep boop.');
+log.info('Hello, world.');
+log.success('It worked!');
+log.warn('Caution! Caution!');
+log.error('Something went wrong...');
+```
+
+You can add a prefix for your app:
+
+```js
+const log = new Logger('MyApp');
 ```
 
 You can hide certain log levels:
@@ -26,6 +33,7 @@ const log = new Logger('', {
 	levels: [
 		process.env.NODE_ENV !== 'production' && 'debug',
 		'info',
+		'success',
 		'warn',
 		'error',
 	],
