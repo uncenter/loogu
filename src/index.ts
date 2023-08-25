@@ -12,28 +12,41 @@ class Logger {
 		options: { levels?: string[]; throwError?: boolean; exit?: boolean } = {},
 	) {
 		this.prefix = prefix;
-		this.levels = options.levels || ['debug', 'info', 'warn', 'error'];
+		this.levels = options.levels || [
+			'debug',
+			'info',
+			'success',
+			'warn',
+			'error',
+		];
 		this.throwError =
 			options.throwError !== undefined ? options.throwError : true;
 		this.exit = options.exit !== undefined ? options.exit : true;
 	}
 
-	private log(level: 'debug' | 'info' | 'warn' | 'error', args: any[]) {
+	private log(
+		level: 'debug' | 'info' | 'success' | 'warn' | 'error',
+		args: any[],
+	) {
 		const colors: Record<string, (text: string) => string> = {
 			debug: kleur.bgCyan,
 			info: kleur.bgBlue,
+			success: kleur.bgGreen,
 			warn: kleur.bgYellow,
 			error: kleur.bgRed,
 		};
 
 		if (this.levels.includes(level)) {
-			const message = `${
-				this.prefix ? kleur.gray('[') + this.prefix + kleur.gray(']') + ' ' : ''
-			}${colors[level](` ${level.toUpperCase()} `)} ${format.apply(
-				this,
-				args,
-			)}`;
-			console.log(message);
+			const prefix = this.prefix
+				? kleur.gray('[') + this.prefix + kleur.gray(']') + ' '
+				: '';
+			const string = format.apply(this, args);
+
+			console.log(
+				`${prefix}${colors[level](
+					` ${kleur.black(level.toUpperCase())} `,
+				)} ${string}`,
+			);
 		}
 	}
 
@@ -43,6 +56,10 @@ class Logger {
 
 	info(...args: any[]) {
 		this.log('info', args);
+	}
+
+	success(...args: any[]) {
+		this.log('success', args);
 	}
 
 	warn(...args: any[]) {
