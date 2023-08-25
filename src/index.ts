@@ -1,4 +1,5 @@
 import kleur from 'kleur';
+import { format } from 'util';
 
 class Logger {
 	private prefix: string;
@@ -17,7 +18,7 @@ class Logger {
 		this.exit = options.exit !== undefined ? options.exit : true;
 	}
 
-	private log(level: 'debug' | 'info' | 'warn' | 'error', message: string) {
+	private log(level: 'debug' | 'info' | 'warn' | 'error', args: any[]) {
 		const colors: Record<string, (text: string) => string> = {
 			debug: kleur.bgCyan,
 			info: kleur.bgBlue,
@@ -26,30 +27,33 @@ class Logger {
 		};
 
 		if (this.levels.includes(level)) {
-			message = `${
+			const message = `${
 				this.prefix ? kleur.gray('[') + this.prefix + kleur.gray(']') + ' ' : ''
-			}${colors[level](` ${level.toUpperCase()} `)} ${message}`;
+			}${colors[level](` ${level.toUpperCase()} `)} ${format.apply(
+				this,
+				args,
+			)}`;
 			console.log(message);
 		}
 	}
 
-	debug(...messages: string[]) {
-		this.log('debug', messages.join(' '));
+	debug(...args: any[]) {
+		this.log('debug', args);
 	}
 
-	info(...messages: string[]) {
-		this.log('info', messages.join(' '));
+	info(...args: any[]) {
+		this.log('info', args);
 	}
 
-	warn(...messages: string[]) {
-		this.log('warn', messages.join(' '));
+	warn(...args: any[]) {
+		this.log('warn', args);
 	}
 
-	error(...messages: string[]) {
-		this.log('error', messages.join(' '));
+	error(...args: any[]) {
+		this.log('error', args);
 
 		if (this.throwError) {
-			const error = new Error(messages.join(' '));
+			const error = new Error(format.apply(this, args));
 			Error.captureStackTrace(error, Logger.prototype.error);
 			throw error;
 		}
