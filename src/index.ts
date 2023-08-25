@@ -4,15 +4,17 @@ class Logger {
 	private prefix: string;
 	private levels: string[];
 	private throwError: boolean;
+	private exit: boolean;
 
 	constructor(
 		prefix: string = '',
-		options: { levels?: string[]; throwError?: boolean } = {},
+		options: { levels?: string[]; throwError?: boolean; exit?: boolean } = {},
 	) {
 		this.prefix = prefix;
 		this.levels = options.levels || ['debug', 'info', 'warn', 'error'];
 		this.throwError =
 			options.throwError !== undefined ? options.throwError : true;
+		this.exit = options.exit !== undefined ? options.exit : true;
 	}
 
 	private log(level: 'debug' | 'info' | 'warn' | 'error', message: string) {
@@ -48,10 +50,10 @@ class Logger {
 
 		if (this.throwError) {
 			const error = new Error(messages.join(' '));
-			// @ts-expect-error
 			Error.captureStackTrace(error, Logger.prototype.error);
 			throw error;
 		}
+		if (this.exit) process.exit(1);
 	}
 }
 
