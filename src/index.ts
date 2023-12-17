@@ -1,5 +1,6 @@
+import { format } from 'node:util';
+
 import pc from 'picocolors';
-import { format } from 'util';
 
 const THIN_SPACE = '\u2009';
 
@@ -22,13 +23,13 @@ class Logger {
 			'error',
 		];
 		this.throwError =
-			options.throwError !== undefined ? options.throwError : true;
-		this.exit = options.exit !== undefined ? options.exit : true;
+			options.throwError === undefined ? true : options.throwError;
+		this.exit = options.exit === undefined ? true : options.exit;
 	}
 
 	private log(
 		level: 'debug' | 'info' | 'success' | 'warn' | 'error',
-		args: any[],
+		args: unknown[],
 	) {
 		const colors: Record<string, (text: string) => string> = {
 			debug: pc.cyan,
@@ -55,23 +56,23 @@ class Logger {
 		}
 	}
 
-	debug(...args: any[]) {
+	debug(...args: unknown[]) {
 		this.log('debug', args);
 	}
 
-	info(...args: any[]) {
+	info(...args: unknown[]) {
 		this.log('info', args);
 	}
 
-	success(...args: any[]) {
+	success(...args: unknown[]) {
 		this.log('success', args);
 	}
 
-	warn(...args: any[]) {
+	warn(...args: unknown[]) {
 		this.log('warn', args);
 	}
 
-	error(...args: any[]) {
+	error(...args: unknown[]) {
 		this.log('error', args);
 
 		if (this.throwError) {
