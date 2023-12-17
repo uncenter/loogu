@@ -48,7 +48,7 @@ const log = new Logger('', {
 You can disable throwing errors:
 
 ```js
-const log = new Logger('MyApp', {
+const log = new Logger('', {
 	throwError: false,
 });
 ```
