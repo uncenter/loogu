@@ -1,5 +1,7 @@
-import kleur from 'kleur';
+import pc from 'picocolors';
 import { format } from 'util';
+
+const THIN_SPACE = '\u2009';
 
 class Logger {
 	private prefix: string;
@@ -29,23 +31,26 @@ class Logger {
 		args: any[],
 	) {
 		const colors: Record<string, (text: string) => string> = {
-			debug: kleur.bgCyan,
-			info: kleur.bgBlue,
-			success: kleur.bgGreen,
-			warn: kleur.bgYellow,
-			error: kleur.bgRed,
+			debug: pc.cyan,
+			info: pc.blue,
+			success: pc.green,
+			warn: pc.yellow,
+			error: pc.red,
 		};
 
 		if (this.levels.includes(level)) {
 			const prefix = this.prefix
-				? kleur.gray('[') + this.prefix + kleur.gray(']') + ' '
+				? pc.gray('[') + this.prefix + pc.gray(']') + ' '
 				: '';
-			const string = format.apply(this, args);
+
+			const message = format.apply(this, args);
 
 			console.log(
-				`${prefix}${colors[level](
-					`\u2009${kleur.black(level.toUpperCase())}\u2009`,
-				)} ${string}`,
+				`${prefix}${pc.bold(
+					pc.inverse(
+						colors[level](`${THIN_SPACE}${level.toUpperCase()}${THIN_SPACE}`),
+					),
+				)} ${message}`,
 			);
 		}
 	}
