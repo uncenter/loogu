@@ -1,9 +1,14 @@
-# 🪵 loogu
+# loogu
+
+A simple logging utility.
+
+## Installation
 
 ```sh
 npm i loogu
 pnpm add loogu
 yarn add loogu
+bun add loogu
 ```
 
 ## Usage
@@ -43,7 +48,7 @@ const log = new Logger('', {
 You can disable throwing errors:
 
 ```js
-const log = new Logger('', {
+const log = new Logger('MyApp', {
 	throwError: false,
 });
 ```
