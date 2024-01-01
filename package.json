@@ -3,10 +3,7 @@
 	"description": "A simple logging utility.",
 	"version": "0.3.0",
 	"author": "uncenter <hi@uncenter.dev>",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/uncenter/loogu.git"
-	},
+	"repository": "uncenter/loogu",
 	"license": "MIT",
 	"files": [
 		"README.md",
@@ -26,22 +23,22 @@
 	},
 	"scripts": {
 		"build": "unbuild",
-		"autofix": "eslint --fix .",
+		"lint": "eslint .",
 		"format": "prettier --write ."
 	},
 	"dependencies": {
 		"picocolors": "^1.0.0"
 	},
 	"devDependencies": {
-		"@types/node": "^20.10.4",
-		"@typescript-eslint/eslint-plugin": "^6.14.0",
-		"@typescript-eslint/parser": "^6.14.0",
+		"@types/node": "^20.10.6",
+		"@typescript-eslint/eslint-plugin": "^6.17.0",
+		"@typescript-eslint/parser": "^6.17.0",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-import": "^2.29.1",
-		"eslint-plugin-unicorn": "^49.0.0",
+		"eslint-plugin-unicorn": "^50.0.1",
 		"prettier": "^3.1.1",
 		"unbuild": "^2.0.0"
 	},
-	"packageManager": "pnpm@8.12.1"
+	"packageManager": "pnpm@8.13.1+sha256.9e5f62ce5f2b7d4ceb3c2848f41cf0b33032c24d683c7088b53f62b1885fb246"
 }
