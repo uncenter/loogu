@@ -47,10 +47,8 @@ class Logger {
 			const message = format.apply(this, args);
 
 			console.log(
-				`${prefix}${pc.bold(
-					pc.inverse(
-						colors[level](`${THIN_SPACE}${level.toUpperCase()}${THIN_SPACE}`),
-					),
+				`${prefix}${pc.inverse(
+					colors[level](`${THIN_SPACE}${level.toUpperCase()}${THIN_SPACE}`),
 				)} ${message}`,
 			);
 		}
