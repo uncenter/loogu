@@ -2,6 +2,8 @@
 
 A simple logging utility.
 
+![](./docs/images/demo.png)
+
 ## Installation
 
 ```sh
@@ -25,13 +27,13 @@ log.warn('Caution! Caution!');
 log.error('Something went wrong...');
 ```
 
-You can add a prefix for your app:
+You can add a prefix for your app.
 
 ```js
 const log = new Logger('MyApp');
 ```
 
-You can hide certain log levels:
+You can hide certain log levels.
 
 ```js
 const log = new Logger('', {
@@ -45,7 +47,7 @@ const log = new Logger('', {
 });
 ```
 
-You can disable throwing errors:
+You can disable throwing errors (when `log.error()` is called).
 
 ```js
 const log = new Logger('', {
