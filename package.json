@@ -1,7 +1,7 @@
 {
 	"name": "loogu",
 	"description": "A simple logging utility.",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"author": "uncenter <hi@uncenter.dev>",
 	"repository": "uncenter/loogu",
 	"license": "MIT",
